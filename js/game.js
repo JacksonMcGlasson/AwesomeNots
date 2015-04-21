@@ -1,4 +1,3 @@
-
 /* Game namespace */
 var game = {
     // an object where to store game information
@@ -20,6 +19,7 @@ var game = {
         creepAttackTimer: 1000,
         playerMoveSpeed: 5,
         creepMoveSpeed: 3,
+        enemyMoveSpeed: -5,
         gameTimerManager: "",
         heroDeathManager: "",
         spearTimer: 15,

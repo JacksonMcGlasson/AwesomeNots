@@ -152,6 +152,9 @@ game.PlayerEntity = me.Entity.extend({
 
         } else if (response.b.type === "PlayerCreep") {
             this.collideWithPlayerCreep(response);
+            
+        }else if (response.b.type === "EnemyHero") {
+            this.collideWithEnemyHero(response);
 
         }
     },
@@ -191,6 +194,14 @@ game.PlayerEntity = me.Entity.extend({
     collideWithPlayerCreep: function (response) {
 
     },
+     collideWithEnemyHero: function (response) {
+        var xdif = this.pos.x - response.b.pos.x;
+        var ydif = this.pos.y - response.b.pos.y;
+        this.stopMovement(xdif);
+        if (this.checkAttack(xdif, ydif)) {
+            this.hitEnemyHero(response);
+        }
+    },
     stopMovement: function (xdif) {
         if (xdif > 0) {
             this.pos.x = this.pos.x + 1;
@@ -219,6 +230,14 @@ game.PlayerEntity = me.Entity.extend({
         if (response.b.health <= game.data.playerAttack) {
             //adds gold for a creep kill
             game.data.gold += 1;
+            console.log("current gold: " + game.data.gold);
+        }
+        response.b.loseHealth(game.data.playerAttack);
+    },
+     hitEnemyHero: function (response) {
+        if (response.b.health <= game.data.playerAttack) {
+            //adds gold for a creep kill
+            game.data.gold += 10;
             console.log("current gold: " + game.data.gold);
         }
         response.b.loseHealth(game.data.playerAttack);

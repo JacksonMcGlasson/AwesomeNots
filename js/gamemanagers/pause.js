@@ -10,11 +10,11 @@ game.Pause = Object.extend({
     update: function () {
         this.now = new Date().getTime();
         // console.log(this.now - this.lastBuy);
-        if (me.input.isKeyPressed("pause") && ((this.now - this.lastPause) >= 500)) {
-            console.log("buy screen");
+        if (me.input.isKeyPressed("pause") ) {
+            console.log("pause screen");
             this.lastPause = this.now;
             if (!this.pausing) {
-                console.log("time to buy");
+                console.log("pausing");
                 this.pause();
             } else {
                 this.resume();

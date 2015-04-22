@@ -33,7 +33,6 @@ game.Pause = Object.extend({
         me.game.world.addChild(game.data.pausescreen, 34);
         game.data.player.body.setVelocity(0, 0);
         me.state.pause(me.state.PLAY);
-        me.input.bindKey(me.input.KEY.F1, "F1", true);
         this.setPauseText();
 
 
@@ -63,7 +62,6 @@ game.Pause = Object.extend({
         me.state.resume(me.state.PLAY);
         game.data.player.body.setVelocity(game.data.playerMoveSpeed, 20);
         me.game.world.removeChild(game.data.buyscreen);
-        me.input.unbindKey(me.input.KEY.F1, "F1", true);
        
         me.game.world.removeChild(game.data.pausetext);
     },

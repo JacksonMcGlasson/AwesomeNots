@@ -1,3 +1,4 @@
+
 /* Game namespace */
 var game = {
     // an object where to store game information
@@ -83,6 +84,7 @@ var game = {
         me.pool.register("PlayerBase", game.PlayerBaseEntity);
         me.pool.register("EnemyBase", game.EnemyBaseEntity);
         me.pool.register("EnemyCreep", game.EnemyCreep, true);
+         me.pool.register("CreepJump", game.CreepJump, true);
         me.pool.register("PlayerCreep", game.PlayerCreep, true);
         me.pool.register("GameTimerManager", game.GameTimerManager);
         me.pool.register("HeroDeathManager", game.HeroDeathManager);
@@ -93,8 +95,9 @@ var game = {
         me.pool.register("spear", game.SpearThrow, true);
         me.pool.register("MiniMap", game.MiniMap, true);
         me.pool.register("MiniPlayerLocation", game.MiniPlayerLocation, true);
-        me.pool.register("Pause", game.Pause, true);
+        me.pool.register("Pause", game.Pause);
         me.pool.register("EnemyHero", game.EnemyHero, true);
+       
 
         me.state.set(me.state.MENU, new game.TitleScreen());
         me.state.set(me.state.PLAY, new game.PlayScreen());

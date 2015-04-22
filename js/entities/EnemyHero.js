@@ -90,7 +90,18 @@ game.EnemyHero = me.Entity.extend({
                 //makes player lose health
                 response.b.loseHealth(game.data.playerAttack);
             }
-        }
+        }else if (response.b.type === "CreepJump") {
+            var xdif = this.pos.x - response.b.pos.x;
+
+            this.attacking = true;
+            //this.lastAtacking = this.now;
+
+            //keeps moving creep to right to maintain position
+            if (xdif > 0) {
+                //this.pos.x = this.pos.x + 1;
+                this.body.vel.y = -20;
+            }
+        } 
     }
 });
 

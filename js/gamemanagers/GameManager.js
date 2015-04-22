@@ -17,7 +17,7 @@ game.ExperienceManager = Object.extend({
     },
     gameOver: function (win) {
         if (win) {
-            game.data.exp += 10;
+            game.data.exp += 5;
         } else {
             game.data.exp += 1;
         }

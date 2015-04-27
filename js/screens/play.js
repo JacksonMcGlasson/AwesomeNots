@@ -33,6 +33,7 @@ game.PlayScreen = me.ScreenObject.extend({
         //binds keys
         me.input.bindKey(me.input.KEY.B, "buy");
         me.input.bindKey(me.input.KEY.P, "pause");
+        me.input.bindKey(me.input.KEY.H, "hideminimap");
         me.input.bindKey(me.input.KEY.Q, "ability1");
         me.input.bindKey(me.input.KEY.W, "ability2");
         me.input.bindKey(me.input.KEY.E, "ability3");

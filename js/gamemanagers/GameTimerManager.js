@@ -27,9 +27,9 @@ game.GameTimerManager = Object.extend({
             //makes only one a second
             this.lastCreep = this.now;
             var creepe = me.pool.pull("EnemyCreep", 2550, 0, {});
-            me.game.world.addChild(creepe, 5);
+            me.game.world.addChild(creepe, 60);
             var creeper = me.pool.pull("PlayerCreep", 500, 30, {});
-            me.game.world.addChild(creeper, 5);
+            me.game.world.addChild(creeper, 60);
         }
     }
 });

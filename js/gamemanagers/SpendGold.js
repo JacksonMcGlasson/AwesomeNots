@@ -25,14 +25,14 @@ game.SpendGold = Object.extend({
         return true;
     },
     startBuying: function () {
-        console.log("green");
+      
         this.buying = true;
         
         game.data.pausePos = me.game.viewport.localToWorld(0, 0);
         game.data.buyscreen = new me.Sprite(game.data.pausePos.x, game.data.pausePos.y, me.loader.getImage("gold-screen"));
         game.data.buyscreen.updateWhenPaused = true;
         game.data.buyscreen.setOpacity(0.8);
-        me.game.world.addChild(game.data.buyscreen, 34);
+        me.game.world.addChild(game.data.buyscreen, 69);
         game.data.player.body.setVelocity(0, 0);
         me.state.pause(me.state.PLAY);
         me.input.bindKey(me.input.KEY.F1, "F1", true);
@@ -52,10 +52,10 @@ game.SpendGold = Object.extend({
                 this.font = new me.Font("Arial", 26, "white");
                 this.updateWhenPaused = true;
                 this.alwaysUpdate = true;
-                console.log("red");
+              
             },
             draw: function(renderer){
-                console.log(" orange");
+               
                 this.font.draw(renderer.getContext(), "PRESS F1-F6 TO BUY, B TO SKIP. CURRENT GOLD: " + game.data.gold, this.pos.x, this.pos.y);
                 this.font.draw(renderer.getContext(), "SKILL 1: INCREASE DAMAGE. CURRENT LEVEL: " + game.data.skill1 + " COST: " + ((game.data.skill1 + 1) * 10), this.pos.x, this.pos.y + 40);
                 this.font.draw(renderer.getContext(), "SKILL 2: RUN FASTER. CURRENT LEVEL: " + game.data.skill2 + " COST: " + ((game.data.skill2 + 1) * 10), this.pos.x, this.pos.y + 80);
@@ -67,10 +67,10 @@ game.SpendGold = Object.extend({
             }
 
         }));
-        me.game.world.addChild(game.data.buytext, 35);
+        me.game.world.addChild(game.data.buytext, 70);
     },
     stopBuying: function () {
-        console.log("blue");
+     
         this.buying = false;
         me.state.resume(me.state.PLAY);
         game.data.player.body.setVelocity(game.data.playerMoveSpeed, 20);

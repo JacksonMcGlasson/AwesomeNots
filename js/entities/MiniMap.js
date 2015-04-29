@@ -11,5 +11,34 @@ game.MiniMap = me.Entity.extend({
                 }
             }]);
         this.floating = true;
-    }
+        this.mapping = false;
+        
+    },
+    update: function () {
+        this.now = new Date().getTime();
+        // console.log(this.now - this.lastBuy);
+        if (me.input.isKeyPressed("map") && ((this.now - this.lastMap) >= 1000)) {
+            console.log("buy screen");
+            this.lastMap = this.now;
+            if (!this.mapping) {
+                console.log("time to buy");
+                this.startMapping();
+            } else {
+                this.stopMapping();
+            }
+        }
+       
+
+        return true;
+    },
+    startMapping: function () {
+      
+        this.mapping = true;
+        me.game.world.addChild(game.data.minimap, 69);
+        
+    },
+  
+    stopMapping: function () {
+        me.game.world.removeChild(game.data.minimap);
+    },
 });

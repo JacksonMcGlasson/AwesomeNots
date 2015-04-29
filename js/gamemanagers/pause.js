@@ -9,8 +9,9 @@ game.Pause = Object.extend({
     },
     update: function () {
         this.now = new Date().getTime();
+        console.log("update");
         // console.log(this.now - this.lastBuy);
-        if (me.input.isKeyPressed("pause") ) {
+        if (me.input.isKeyPressed("pause") && ((this.now - this.lastPause) >= 1000)) {
             console.log("pause screen");
             this.lastPause = this.now;
             if (!this.pausing) {
@@ -27,10 +28,10 @@ game.Pause = Object.extend({
         this.pausing = true;
         
         game.data.pausePos = me.game.viewport.localToWorld(0, 0);
-        game.data.pausescreen = new me.Sprite(game.data.pausePos.x, game.data.pausePos.y, me.loader.getImage("gold-screen"));
+        game.data.pausescreen = new me.Sprite(game.data.pausePos.x, game.data.pausePos.y, me.loader.getImage("pause"));
         game.data.pausescreen.updateWhenPaused = true;
         game.data.pausescreen.setOpacity(0.8);
-        me.game.world.addChild(game.data.pausescreen, 34);
+        me.game.world.addChild(game.data.pausescreen, 69);
         game.data.player.body.setVelocity(0, 0);
         me.state.pause(me.state.PLAY);
         this.setPauseText();
@@ -54,7 +55,7 @@ game.Pause = Object.extend({
             }
 
         }));
-        me.game.world.addChild(game.data.buytext, 35);
+        me.game.world.addChild(game.data.buytext, 70);
     },
     resume: function () {
         console.log("blue");
@@ -64,7 +65,7 @@ game.Pause = Object.extend({
         me.game.world.removeChild(game.data.buyscreen);
        
         me.game.world.removeChild(game.data.pausetext);
-    },
+    }
    
     
 });

@@ -5,8 +5,9 @@ game.resources = [
      */
     {name: "background-tiles", type: "image", src: "data/img/background-tiles.png"},
     {name: "meta-tiles", type: "image", src: "data/img/meta-tiles.png"},
+
+     {name: "background2", type: "image", src: "data/img/background2.png"},
     {name: "player", type: "image", src: "data/img/orcSpear.png"},
-    {name: "background2", type: "image", src: "data/img/background2.png"},
      {name: "enemyhero", type: "image", src: "data/img/orcSpear.png"},
     {name: "tower", type: "image", src: "data/img/tower_round.svg.png"},
     {name: "creep1", type: "image", src: "data/img/brainmonster.png"},
@@ -15,6 +16,7 @@ game.resources = [
     {name: "gold-screen", type: "image", src: "data/img/spend.png"},
     {name: "load-screen", type: "image", src: "data/img/loadpic.png"},
     {name: "new-screen", type: "image", src: "data/img/newpic.png"},
+    {name: "pause", type: "image", src: "data/img/pause.png"},
     {name: "spear", type: "image", src: "data/img/spear.png"},
     {name: "minimap", type: "image", src: "data/img/miniMap.png"},
     {name: "creep2", type: "image", src: "data/img/brainmonster.png"},
@@ -29,6 +31,7 @@ game.resources = [
      * {name: "example01", type: "tmx", src: "data/map/example01.json"},
      */
     {name: "Level01", type: "tmx", src: "data/map/Level01.tmx"},
+  
     /* Background music. 
      * @example
      * {name: "example_bgm", type: "audio", src: "data/bgm/"},
@@ -40,3 +43,4 @@ game.resources = [
      * {name: "example_sfx", type: "audio", src: "data/sfx/"}
      */
 ];
+

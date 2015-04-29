@@ -13,17 +13,18 @@ var game = {
         enemyCreepHealth: 10,
         playerCreepHealth: 5,
         playerHealth: 10 ,
-        enemyCreepAttack: 1,
+        enemyCreepAttack: 2,
         playerCreepAttack: 1,
         playerAttack: 1 ,
         playerAttackTimer: 1000,
         creepAttackTimer: 1000,
         playerMoveSpeed: 5,
         creepMoveSpeed: 3,
-        enemyMoveSpeed: -5,
+        enemyMoveSpeed: 5,
         gameTimerManager: "",
         heroDeathManager: "",
         spearTimer: 15,
+        burstTimer: 15,
         player: "",
         exp: 0,
         gold: 0 ,
@@ -98,7 +99,7 @@ var game = {
         me.pool.register("Pause", game.Pause);
         me.pool.register("EnemyHero", game.EnemyHero, true);
        
-
+        //sets states
         me.state.set(me.state.MENU, new game.TitleScreen());
         me.state.set(me.state.PLAY, new game.PlayScreen());
         me.state.set(me.state.SPENDEXP, new game.SpendExp());

@@ -28,6 +28,7 @@ game.PlayerEntity = me.Entity.extend({
         this.now = new Date().getTime();
         this.lastHit = this.now;
         this.lastSpear = this.now;
+        this.lastBurst = this.now;
         this.lastAttack = new Date().getTime();
     },
     setAttributes: function () {
@@ -103,14 +104,18 @@ game.PlayerEntity = me.Entity.extend({
         }
     },
     checkAbilityKeys: function () {
+        //ability for a temporary speed burst
         if (me.input.isKeyPressed("ability1")) {
-            // this.speedBurst();
+             this.speedBurst();
+        //ability to absorb player creep health
         } else if (me.input.isKeyPressed("ability2")) {
             //this.eatCreep();
+        //ability to throw spear
         } else if (me.input.isKeyPressed("ability3")) {
             this.throwSpear();
         }
     },
+    //creates spear
     throwSpear: function () {
         if ((this.now - this.lastSpear) >= game.data.spearTimer * 1000 && game.data.ability3 >= 0) {
             this.lastSpear = this.now;
@@ -118,7 +123,15 @@ game.PlayerEntity = me.Entity.extend({
             me.game.world.addChild(spear, 10);
         }
     },
+    //creates speed boost
+    speedBurst: function () {
+        if ((this.now - this.lastBurst) >= game.data.burstTimer * 1000 && game.data.ability1 >= 0) {
+            this.lastBurst = this.now;
+            this.body.vel.x  += game.data.ability1 * 3;
+        }
+    },
     setAnimation: function () {
+        //if the player is attacking set these animations
         if (this.attacking) {
             if (!this.renderable.isCurrentAnimation("attack")) {
                 //sets animation to attack than to idle
@@ -137,22 +150,24 @@ game.PlayerEntity = me.Entity.extend({
             this.renderable.setCurrentAnimation("idle");
         }
     },
+    //how the player loses health
     loseHealth: function (damage) {
         this.health = this.health - damage;
         //  console.log(this.health);
     },
+    //what happems when the player collides with things
     collideHandler: function (response) {
         //console.log(this.health);
         //collisions with the enemy base
         if (response.b.type === 'EnemyBaseEntity') {
             this.collideWithEnemyBase(response);
-            //player collisions with creeps
+            //player collisions with enemycreeps
         } else if (response.b.type === "EnemyCreep") {
             this.collideWithEnemyCreep(response);
-
+        //player collision with player creep
         } else if (response.b.type === "PlayerCreep") {
             this.collideWithPlayerCreep(response);
-            
+        //player collision with enmey hero
         }else if (response.b.type === "EnemyHero") {
             this.collideWithEnemyHero(response);
 
@@ -168,9 +183,11 @@ game.PlayerEntity = me.Entity.extend({
         }
         //collision from the left
         else if (xdif > -35 && this.facing === "right" && (xdif < 0) && ydif > -50) {
+            //stops player
             this.body.vel.x = 0;
-            //collision from the right
+        //collision from the right
         } else if (xdif < 70 && this.facing === "left" && (xdif > 0) && ydif > -50) {
+            //stops player
             this.body.vel.x = 0;
         }
         //collision from the top
@@ -178,6 +195,7 @@ game.PlayerEntity = me.Entity.extend({
             this.body.falling = false;
             this.body.vel.y = -1;
         }
+        //attacking the base
         if (this.renderable.isCurrentAnimation("attack") && this.now - this.lastHit >= game.data.playerAttackTimer) {
             this.lastHit = this.now;
             response.b.loseHealth(game.data.playerAttack);

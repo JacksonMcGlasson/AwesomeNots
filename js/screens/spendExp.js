@@ -47,28 +47,28 @@ game.SpendExp = me.ScreenObject.extend({
                     game.data.exp1 += 1;
                     game.data.exp -= exp1cost;
                 } else {
-                    console.log("Not enough exp for ability 1");
+                    console.log("Not enough exp for skill 1");
                 }
             } else if (action === "F2") {
                if (game.data.exp >= exp2cost) {
                     game.data.exp2 += 1;
                     game.data.exp -= exp2cost;
                 } else {
-                    console.log("Not enough exp for ability 2");
+                    console.log("Not enough exp for skill 2");
                 }
             } else if (action === "F3") {
                 if (game.data.exp >= exp3cost) {
                     game.data.exp3 += 1;
                     game.data.exp -= exp3cost;
                 } else {
-                    console.log("Not enough exp for ability 3");
+                    console.log("Not enough exp for skill 3");
                 }
             } else if (action === "F4") {
                if (game.data.exp >= exp4cost) {
                     game.data.exp4 += 1;
                     game.data.exp -= exp4cost;
                 } else {
-                    console.log("Not enough exp for ability 4");
+                    console.log("Not enough exp for skill 4");
                 }
             //if F5 is pressed
             } else if (action === "F5") {

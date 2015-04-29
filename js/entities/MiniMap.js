@@ -32,13 +32,14 @@ game.MiniMap = me.Entity.extend({
         return true;
     },
     startMapping: function () {
-      
-        this.mapping = true;
-        me.game.world.addChild(game.data.minimap, 69);
+       this.mapping = false;
+        me.game.world.removeChild(game.data.minimap);
+       
         
     },
-  
+    //when 
     stopMapping: function () {
-        me.game.world.removeChild(game.data.minimap);
-    },
+        this.mapping = true;
+        me.game.world.addChild(game.data.minimap, 69);
+    }
 });

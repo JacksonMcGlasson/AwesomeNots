@@ -65,7 +65,7 @@ game.EnemyHero = me.Entity.extend({
             //this.lastAtacking = this.now;
 
             //keeps moving creep to right to maintain position
-            if (xdif < 0) {
+            if (xdif > 0) {
                 //this.pos.x = this.pos.x + 1;
                 this.body.vel.x = 0;
             }
@@ -104,6 +104,4 @@ game.EnemyHero = me.Entity.extend({
         } 
     }
 });
-
-
 

@@ -52,6 +52,7 @@ game.PlayScreen = me.ScreenObject.extend({
         // remove the HUD from the game world
         me.game.world.removeChild(this.HUD);
         me.game.world.removeChild(game.data.player);
+        //stops music
         me.audio.stopTrack();
 
     },

@@ -13,6 +13,7 @@ game.SpendExp = me.ScreenObject.extend({
         me.input.bindKey(me.input.KEY.F3, "F3");
         me.input.bindKey(me.input.KEY.F4, "F4");
         me.input.bindKey(me.input.KEY.F5, "F5");
+        //variables for the cost of the exp skills
         var exp1cost = ((Number(game.data.exp1) + 1) * 10);
         var exp2cost = ((Number(game.data.exp2) + 1) * 10);
         var exp3cost = ((Number(game.data.exp3) + 1) * 10);
@@ -21,6 +22,7 @@ game.SpendExp = me.ScreenObject.extend({
 
         me.game.world.addChild(new (me.Renderable.extend({
             init: function () {
+                //sets position
                 this._super(me.Renderable, 'init', [10, 10, 300, 50]);
                 //sets font
                 this.font = new me.Font("Arial", 26, "white");
@@ -49,6 +51,7 @@ game.SpendExp = me.ScreenObject.extend({
                 } else {
                     console.log("Not enough exp for skill 1");
                 }
+                //same thing for F2-F4
             } else if (action === "F2") {
                if (game.data.exp >= exp2cost) {
                     game.data.exp2 += 1;

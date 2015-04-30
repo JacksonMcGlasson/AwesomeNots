@@ -22,23 +22,23 @@ game.MiniMap = me.Entity.extend({
             this.lastMap = this.now;
             if (!this.mapping) {
                 console.log("time to buy");
-                this.startMapping();
+                mapOff();
             } else {
-                this.stopMapping();
+                this.mapOn();
             }
         }
        
 
         return true;
     },
-    startMapping: function () {
+   mapOff: function () {
        this.mapping = false;
         me.game.world.removeChild(game.data.minimap);
        
         
     },
     //when 
-    stopMapping: function () {
+    mapOn: function () {
         this.mapping = true;
         me.game.world.addChild(game.data.minimap, 69);
     }

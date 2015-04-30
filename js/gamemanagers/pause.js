@@ -24,49 +24,64 @@ game.Pause = Object.extend({
         return true;
     },
     pause: function () {
-       
+
         this.pausing = true;
         
-        game.data.pausePos = me.game.viewport.localToWorld(0, 0);
-        game.data.pausescreen = new me.Sprite(game.data.pausePos.x, game.data.pausePos.y, me.loader.getImage("pause"));
-        game.data.pausescreen.updateWhenPaused = true;
-        game.data.pausescreen.setOpacity(0.8);
-        me.game.world.addChild(game.data.pausescreen, 69);
-        game.data.player.body.setVelocity(0, 0);
+        //the game pauses
         me.state.pause(me.state.PLAY);
+        //sets wher pause screen will appear
+        game.data.pausePos = me.game.viewport.localToWorld(0, 0);
+        //what is drawn as the background for the pause screen
+        game.data.pausescreen = new me.Sprite(game.data.pausePos.x, game.data.pausePos.y, me.loader.getImage("pause"));
+        //the text of the pause screen is set
         this.setPauseText();
+        //it will update
+        game.data.pausescreen.updateWhenPaused = true;
+        //sets opacity
+        game.data.pausescreen.setOpacity(0.8);
+        //adds the actual pause screen
+        me.game.world.addChild(game.data.pausescreen, 69);
+        //stops the player
+        game.data.player.body.setVelocity(0, 0);
+        
+        
 
 
     },
     setPauseText: function () {
         game.data.pausetext = new (me.Renderable.extend({
-            init: function() {
+            init: function () {
+                //font and other settings
                 this._super(me.Renderable, 'init', [game.data.pausePos.x, game.data.pausePos.y, 300, 50]);
                 this.font = new me.Font("Arial", 26, "white");
                 this.updateWhenPaused = true;
                 this.alwaysUpdate = true;
-               
+
             },
-            draw: function(renderer){
-               
-                this.font.draw(renderer.getContext(), "PAUSE SCREEN " , this.pos.x, this.pos.y);
-               
+            draw: function (renderer) {
+                //the actual text you will see on the screen
+                this.font.draw(renderer.getContext(), "PAUSE SCREEN ", this.pos.x, this.pos.y);
+
 
             }
 
         }));
-        me.game.world.addChild(game.data.buytext, 70);
+        //adds the text
+        me.game.world.addChild(game.data.pausetext, 70);
     },
     resume: function () {
         console.log("blue");
         this.pausing = false;
+        //resumes the game
         me.state.resume(me.state.PLAY);
+        //the player can move now
         game.data.player.body.setVelocity(game.data.playerMoveSpeed, 20);
-        me.game.world.removeChild(game.data.buyscreen);
-       
+        //removes the pause screen
+        me.game.world.removeChild(game.data.pausescreen);
+        //removes the pause text
         me.game.world.removeChild(game.data.pausetext);
     }
-   
-    
+
+
 });
 

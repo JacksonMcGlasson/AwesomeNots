@@ -19,11 +19,13 @@ game.NewProfile = me.ScreenObject.extend({
         //adds text
         me.game.world.addChild(new (me.Renderable.extend({
             init: function () {
+                //text settings
                 this._super(me.Renderable, 'init', [10, 10, 300, 50]);
                 this.font = new me.Font("Arial", 26, "white");
 
             },
             draw: function (renderer) {
+                //text you see on screen
                 this.font.draw(renderer.getContext(), "PICK A USERNAME AND PASSWORD ", this.pos.x, this.pos.y);
             }
 
@@ -35,8 +37,10 @@ game.NewProfile = me.ScreenObject.extend({
      */
     //gets rid of everything
     onDestroyEvent: function () {
+        //hides and input and register button
         document.getElementById("input").style.visibility = "hidden";
         document.getElementById("register").style.visibility = "hidden";
+        //stops music
          me.audio.stopTrack();
     }
 });

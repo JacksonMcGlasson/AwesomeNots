@@ -24,14 +24,16 @@ require_once (__DIR__ . "/php/controller/create-db.php");
         <!--form for registering or loading an old game-->
         <form id="input" method="post">
             <div class="field">
+                 <!-- where the username is inputted-->
                 <label for="username">Username</label>
                 <input type="text" name="usernname" id="username" autocomplete="off">
             </div>
             <div class="field">
+                <!-- where the password is inputted-->
                 <label for="password">Password</label>
                 <input type="password" name="password" id="password">
             </div>
-
+            <!-- buttons registering users, loading them, and taking you to the main menu-->
             <button type="button" id="register">Register</button>
             <button type="button" id="load">Load</button>
             <button type="button" id="mainmenu">Main Menu</button>
@@ -96,9 +98,11 @@ require_once (__DIR__ . "/php/controller/create-db.php");
                 }
             });</script>
         <script>
+            //when the main menu button is clicked you are taken to the main menu
             $("#mainmenu").bind("click", function () {
                 me.state.change(me.state.MENU);
             });
+            //when you register the usernam and password are posted
             $("#register").bind("click", function () {
                 $.ajax({
                     type: "POST",
@@ -110,7 +114,7 @@ require_once (__DIR__ . "/php/controller/create-db.php");
                     dataType: "text"
                 })
                         .success(function (response) {
-
+                            //and the game starts
                             if (response === "true") {
                                 me.state.change(me.state.PLAY);
                             } else {
@@ -121,6 +125,8 @@ require_once (__DIR__ . "/php/controller/create-db.php");
                             alert(response);
                         });
             });
+            //when loading a profile the username and password are checked in login-user
+            
             $("#load").bind("click", function () {
                 $.ajax({
                     type: "POST",
@@ -136,12 +142,14 @@ require_once (__DIR__ . "/php/controller/create-db.php");
                                 alert(response);
 
                             } else {
+                                //if they are correct than the exp variables are oaded
                                 var data = jQuery.parseJSON(response);
                                game.data.exp = Number(data["exp"]);
                                 game.data.exp1 = Number(data["exp1"]);
                                 game.data.exp2 = Number(data["exp2"]);
                                 game.data.exp3 = Number(data["exp3"]);
                                 game.data.exp4 = Number(data["exp4"]);
+                                //and the spend exp screen is launched
                                 me.state.change(me.state.SPENDEXP);
                             }
                         })

@@ -108,11 +108,11 @@ game.PlayerEntity = me.Entity.extend({
     checkAbilityKeys: function () {
         //ability for a temporary speed burst
         if (me.input.isKeyPressed("ability1")) {
-             this.speedBurst();
-        //ability to absorb player creep health
+            this.speedBurst();
+            //ability to absorb player creep health
         } else if (me.input.isKeyPressed("ability2")) {
             //this.eatCreep();
-        //ability to throw spear
+            //ability to throw spear
         } else if (me.input.isKeyPressed("ability3")) {
             this.throwSpear();
         }
@@ -129,7 +129,7 @@ game.PlayerEntity = me.Entity.extend({
     speedBurst: function () {
         if ((this.now - this.lastBurst) >= game.data.burstTimer * 1000 && game.data.ability1 >= 0) {
             this.lastBurst = this.now;
-            this.body.vel.x  += game.data.ability1 * 3;
+            this.body.vel.x += game.data.ability1 * 3;
         }
     },
     setAnimation: function () {
@@ -166,11 +166,11 @@ game.PlayerEntity = me.Entity.extend({
             //player collisions with enemycreeps
         } else if (response.b.type === "EnemyCreep") {
             this.collideWithEnemyCreep(response);
-        //player collision with player creep
+            //player collision with player creep
         } else if (response.b.type === "PlayerCreep") {
             this.collideWithPlayerCreep(response);
-        //player collision with enmey hero
-        }else if (response.b.type === "EnemyHero") {
+            //player collision with enmey hero
+        } else if (response.b.type === "EnemyHero") {
             this.collideWithEnemyHero(response);
 
         }
@@ -187,7 +187,7 @@ game.PlayerEntity = me.Entity.extend({
         else if (xdif > -35 && this.facing === "right" && (xdif < 0) && ydif > -50) {
             //stops player
             this.body.vel.x = 0;
-        //collision from the right
+            //collision from the right
         } else if (xdif < 70 && this.facing === "left" && (xdif > 0) && ydif > -50) {
             //stops player
             this.body.vel.x = 0;
@@ -214,7 +214,7 @@ game.PlayerEntity = me.Entity.extend({
     collideWithPlayerCreep: function (response) {
 
     },
-     collideWithEnemyHero: function (response) {
+    collideWithEnemyHero: function (response) {
         var xdif = this.pos.x - response.b.pos.x;
         var ydif = this.pos.y - response.b.pos.y;
         this.stopMovement(xdif);
@@ -254,7 +254,7 @@ game.PlayerEntity = me.Entity.extend({
         }
         response.b.loseHealth(game.data.playerAttack);
     },
-     hitEnemyHero: function (response) {
+    hitEnemyHero: function (response) {
         if (response.b.health <= game.data.playerAttack) {
             //adds gold for a creep kill
             game.data.gold += 10;

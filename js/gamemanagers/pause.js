@@ -26,7 +26,7 @@ game.Pause = Object.extend({
     pause: function () {
 
         this.pausing = true;
-        
+
         //the game pauses
         me.state.pause(me.state.PLAY);
         //sets wher pause screen will appear
@@ -43,8 +43,8 @@ game.Pause = Object.extend({
         me.game.world.addChild(game.data.pausescreen, 69);
         //stops the player
         game.data.player.body.setVelocity(0, 0);
-        
-        
+
+
 
 
     },

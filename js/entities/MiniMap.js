@@ -12,11 +12,11 @@ game.MiniMap = me.Entity.extend({
             }]);
         this.floating = true;
         this.mapping = false;
-        
+
     },
     update: function () {
         this.now = new Date().getTime();
-        
+
         //if the map key is pressed
         if (me.input.isKeyPressed("map") && ((this.now - this.lastMap) >= 1000)) {
             this.lastMap = this.now;
@@ -29,15 +29,15 @@ game.MiniMap = me.Entity.extend({
                 this.mapOn();
             }
         }
-       
+
 
         return true;
     },
-   mapOff: function () {
-       this.mapping = false;
+    mapOff: function () {
+        this.mapping = false;
         me.game.world.removeChild(game.data.minimap);
-       
-        
+
+
     },
     //when 
     mapOn: function () {

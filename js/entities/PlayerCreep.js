@@ -48,7 +48,7 @@ game.PlayerCreep = me.Entity.extend({
 
         return true;
     },
-     collideHandler: function (response) {
+    collideHandler: function (response) {
         //collision with enemy base
         if (response.b.type === "EnemyBaseEntity") {
             //creep attacks
@@ -77,7 +77,7 @@ game.PlayerCreep = me.Entity.extend({
                 //makes player lose health
                 response.b.loseHealth(game.data.playerCreepAttack);
             }
-        }else if (response.b.type === "CreepJump") {
+        } else if (response.b.type === "CreepJump") {
             var xdif = this.pos.x - response.b.pos.x;
 
             this.attacking = true;
@@ -88,7 +88,7 @@ game.PlayerCreep = me.Entity.extend({
                 //this.pos.x = this.pos.x + 1;
                 this.body.vel.y = -20;
             }
-        } 
+        }
     }
 });
 

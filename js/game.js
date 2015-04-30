@@ -8,15 +8,15 @@ var game = {
         score: 0,
         option1: "",
         option2: "",
-        enemyhero:"",
+        enemyhero: "",
         enemyBaseHealth: 10,
         playerBaseHealth: 20,
         enemyCreepHealth: 10,
         playerCreepHealth: 5,
-        playerHealth: 10 ,
+        playerHealth: 10,
         enemyCreepAttack: 2,
         playerCreepAttack: 1,
-        playerAttack: 1 ,
+        playerAttack: 1,
         playerAttackTimer: 1000,
         creepAttackTimer: 1000,
         playerMoveSpeed: 5,
@@ -28,7 +28,7 @@ var game = {
         burstTimer: 15,
         player: "",
         exp: 0,
-        gold: 0 ,
+        gold: 0,
         ability1: 0,
         ability2: 0,
         ability3: 0,
@@ -86,7 +86,7 @@ var game = {
         me.pool.register("PlayerBase", game.PlayerBaseEntity);
         me.pool.register("EnemyBase", game.EnemyBaseEntity);
         me.pool.register("EnemyCreep", game.EnemyCreep, true);
-         me.pool.register("CreepJump", game.CreepJump, true);
+        me.pool.register("CreepJump", game.CreepJump, true);
         me.pool.register("PlayerCreep", game.PlayerCreep, true);
         me.pool.register("GameTimerManager", game.GameTimerManager);
         me.pool.register("HeroDeathManager", game.HeroDeathManager);
@@ -99,7 +99,7 @@ var game = {
         me.pool.register("MiniPlayerLocation", game.MiniPlayerLocation, true);
         me.pool.register("Pause", game.Pause);
         me.pool.register("EnemyHero", game.EnemyHero, true);
-       
+
         //sets states
         me.state.set(me.state.MENU, new game.TitleScreen());
         me.state.set(me.state.PLAY, new game.PlayScreen());

@@ -24,7 +24,7 @@ require_once (__DIR__ . "/php/controller/create-db.php");
         <!--form for registering or loading an old game-->
         <form id="input" method="post">
             <div class="field">
-                 <!-- where the username is inputted-->
+                <!-- where the username is inputted-->
                 <label for="username">Username</label>
                 <input type="text" name="usernname" id="username" autocomplete="off">
             </div>
@@ -75,7 +75,7 @@ require_once (__DIR__ . "/php/controller/create-db.php");
         <script type="text/javascript" src="js/screens/spendExp.js"></script>
         <!-- /build -->
         <!-- Bootstrap & Mobile optimization tricks -->
-        
+
         <script type="text/javascript">
             window.onReady(function onReady() {
                 game.onload();
@@ -126,7 +126,7 @@ require_once (__DIR__ . "/php/controller/create-db.php");
                         });
             });
             //when loading a profile the username and password are checked in login-user
-            
+
             $("#load").bind("click", function () {
                 $.ajax({
                     type: "POST",
@@ -144,7 +144,7 @@ require_once (__DIR__ . "/php/controller/create-db.php");
                             } else {
                                 //if they are correct than the exp variables are oaded
                                 var data = jQuery.parseJSON(response);
-                               game.data.exp = Number(data["exp"]);
+                                game.data.exp = Number(data["exp"]);
                                 game.data.exp1 = Number(data["exp1"]);
                                 game.data.exp2 = Number(data["exp2"]);
                                 game.data.exp3 = Number(data["exp3"]);

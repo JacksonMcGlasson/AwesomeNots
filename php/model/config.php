@@ -1,4 +1,5 @@
 <?php
+
 //gets information from other page
 require_once (__DIR__ . "/Database.php");
 session_start();

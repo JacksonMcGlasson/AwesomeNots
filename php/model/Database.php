@@ -8,6 +8,7 @@ class Database {
     private $password;
     private $database;
     public $error;
+
     //creates variables
     public function __construct($host, $username, $password, $database) {
         $this->host = $host;

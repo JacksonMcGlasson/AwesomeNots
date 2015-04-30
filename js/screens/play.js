@@ -5,8 +5,8 @@ game.PlayScreen = me.ScreenObject.extend({
     onResetEvent: function () {
         // reset the score
         game.data.score = 0;
-        
-      
+
+
         //loads level
         me.levelDirector.loadLevel("Level01");
         //resets the player entity
@@ -28,8 +28,8 @@ game.PlayScreen = me.ScreenObject.extend({
         //adds in mini map
         game.data.minimap = me.pool.pull("MiniMap", 10, 10, {});
         me.game.world.addChild(game.data.minimap, 30);
-          //plays music
-          me.audio.playTrack("Happy-Chiptune");
+        //plays music
+        me.audio.playTrack("Happy-Chiptune");
         //binds keys
         me.input.bindKey(me.input.KEY.B, "buy");
         me.input.bindKey(me.input.KEY.P, "pause");
@@ -60,8 +60,8 @@ game.PlayScreen = me.ScreenObject.extend({
         //resets the position of the player
         game.data.player = me.pool.pull("player", x, y, {});
         me.game.world.addChild(game.data.player, 60);
-        
-       
+
+
         //resets the position of the mini player on the map
         game.data.miniPlayer = me.pool.pull("MiniPlayerLocation", 10, 10, {});
         me.game.world.addChild(game.data.miniPlayer, 31);
@@ -70,6 +70,6 @@ game.PlayScreen = me.ScreenObject.extend({
         //resets the position of the enemy hero
         game.data.enemyhero = me.pool.pull("EnemyHero", x, y, {});
         me.game.world.addChild(game.data.enemyhero, 60);
-        
+
     }
 });

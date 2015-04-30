@@ -25,9 +25,9 @@ game.SpendGold = Object.extend({
         return true;
     },
     startBuying: function () {
-      
+
         this.buying = true;
-        
+
         game.data.pausePos = me.game.viewport.localToWorld(0, 0);
         //draws the screen
         game.data.buyscreen = new me.Sprite(game.data.pausePos.x, game.data.pausePos.y, me.loader.getImage("gold-screen"));
@@ -54,16 +54,16 @@ game.SpendGold = Object.extend({
     },
     setBuyText: function () {
         game.data.buytext = new (me.Renderable.extend({
-            init: function() {
+            init: function () {
                 //text settings
                 this._super(me.Renderable, 'init', [game.data.pausePos.x, game.data.pausePos.y, 300, 50]);
                 this.font = new me.Font("Arial", 26, "white");
                 this.updateWhenPaused = true;
                 this.alwaysUpdate = true;
-              
+
             },
-            draw: function(renderer){
-               //sets text
+            draw: function (renderer) {
+                //sets text
                 this.font.draw(renderer.getContext(), "PRESS F1-F6 TO BUY, B TO SKIP. CURRENT GOLD: " + game.data.gold, this.pos.x, this.pos.y);
                 this.font.draw(renderer.getContext(), "SKILL 1: INCREASE DAMAGE. CURRENT LEVEL: " + game.data.skill1 + " COST: " + ((game.data.skill1 + 1) * 10), this.pos.x, this.pos.y + 40);
                 this.font.draw(renderer.getContext(), "SKILL 2: RUN FASTER. CURRENT LEVEL: " + game.data.skill2 + " COST: " + ((game.data.skill2 + 1) * 10), this.pos.x, this.pos.y + 80);
@@ -78,7 +78,7 @@ game.SpendGold = Object.extend({
         me.game.world.addChild(game.data.buytext, 70);
     },
     stopBuying: function () {
-     
+
         this.buying = false;
         me.state.resume(me.state.PLAY);
         game.data.player.body.setVelocity(game.data.playerMoveSpeed, 20);

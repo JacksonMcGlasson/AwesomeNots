@@ -45,10 +45,10 @@ game.MiniPlayerLocation = me.Entity.extend({
 
     },
     update: function () {
-       // makes the miniplayer follow the player
+        // makes the miniplayer follow the player
         this.pos.x = (10 + game.data.player.pos.x * 0.062);
-         this.pos.y = (10 + game.data.player.pos.y * 0.06);
-         return true;
+        this.pos.y = (10 + game.data.player.pos.y * 0.06);
+        return true;
     }
 
 });

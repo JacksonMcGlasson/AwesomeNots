@@ -2,9 +2,9 @@ game.GameTimerManager = Object.extend({
     init: function (x, y, settings) {
         //variables for the timer
         this.now = new Date().getTime();
-         this.lastHero = new Date().getTime();
+        this.lastHero = new Date().getTime();
         this.lastCreep = new Date().getTime();
-         this.lastGold = new Date().getTime();
+        this.lastGold = new Date().getTime();
         this.paused = false;
         this.alwaysUpdate = true;
     },
@@ -12,7 +12,7 @@ game.GameTimerManager = Object.extend({
         this.now = new Date().getTime();
         this.goldTimerCheck();
         this.creepTimerCheck();
-     
+
         return true;
     },
     //gives player gold on a timer

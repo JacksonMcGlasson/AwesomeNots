@@ -24,8 +24,7 @@ $query = $_SESSION["connection"]->query("INSERT INTO users SET "
         . "exp2 = 0,"
         . "exp3 = 0,"
         . "exp4 = 0"
-        
-        );
+);
 
 $_SESSION["name"] = $username;
 //checks if user was created successfully

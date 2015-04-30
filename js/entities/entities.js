@@ -59,7 +59,9 @@ game.PlayerEntity = me.Entity.extend({
         return true;
     },
     checkIfDead: function () {
+        //if health is below zero
         if (this.health <= 0) {
+            //you are dead
             return true;
         }
         return false;

@@ -9,7 +9,7 @@ game.SpendGold = Object.extend({
     },
     update: function () {
         this.now = new Date().getTime();
-        // console.log(this.now - this.lastBuy);
+        //if B is pressed than the buy screen will load or be removed 
         if (me.input.isKeyPressed("buy") && ((this.now - this.lastBuy) >= 1000)) {
             console.log("buy screen");
             this.lastBuy = this.now;
@@ -29,18 +29,25 @@ game.SpendGold = Object.extend({
         this.buying = true;
         
         game.data.pausePos = me.game.viewport.localToWorld(0, 0);
+        //draws the screen
         game.data.buyscreen = new me.Sprite(game.data.pausePos.x, game.data.pausePos.y, me.loader.getImage("gold-screen"));
         game.data.buyscreen.updateWhenPaused = true;
+        //sets opacity for buy screeen
         game.data.buyscreen.setOpacity(0.8);
+        //adds buyscreen
         me.game.world.addChild(game.data.buyscreen, 69);
+        //stops player
         game.data.player.body.setVelocity(0, 0);
+        //pauses game 
         me.state.pause(me.state.PLAY);
+        //binds keys 
         me.input.bindKey(me.input.KEY.F1, "F1", true);
         me.input.bindKey(me.input.KEY.F2, "F2", true);
         me.input.bindKey(me.input.KEY.F3, "F3", true);
         me.input.bindKey(me.input.KEY.F4, "F4", true);
         me.input.bindKey(me.input.KEY.F5, "F5", true);
         me.input.bindKey(me.input.KEY.F6, "F6", true);
+        //sets text
         this.setBuyText();
 
 
@@ -48,6 +55,7 @@ game.SpendGold = Object.extend({
     setBuyText: function () {
         game.data.buytext = new (me.Renderable.extend({
             init: function() {
+                //text settings
                 this._super(me.Renderable, 'init', [game.data.pausePos.x, game.data.pausePos.y, 300, 50]);
                 this.font = new me.Font("Arial", 26, "white");
                 this.updateWhenPaused = true;
@@ -55,7 +63,7 @@ game.SpendGold = Object.extend({
               
             },
             draw: function(renderer){
-               
+               //sets text
                 this.font.draw(renderer.getContext(), "PRESS F1-F6 TO BUY, B TO SKIP. CURRENT GOLD: " + game.data.gold, this.pos.x, this.pos.y);
                 this.font.draw(renderer.getContext(), "SKILL 1: INCREASE DAMAGE. CURRENT LEVEL: " + game.data.skill1 + " COST: " + ((game.data.skill1 + 1) * 10), this.pos.x, this.pos.y + 40);
                 this.font.draw(renderer.getContext(), "SKILL 2: RUN FASTER. CURRENT LEVEL: " + game.data.skill2 + " COST: " + ((game.data.skill2 + 1) * 10), this.pos.x, this.pos.y + 80);
@@ -110,6 +118,7 @@ game.SpendGold = Object.extend({
             }
         }
     },
+    //checks to make sure that enough is payed
     checkCost: function (skill) {
         if (skill === 1 && (game.data.gold >= ((game.data.skill1 + 1) * 10))) {
             return true;
@@ -130,8 +139,11 @@ game.SpendGold = Object.extend({
     },
     makePurchase: function (skill) {
         if (skill === 1) {
+            //cost is subtracted from total gold
             game.data.gold -= ((game.data.skill1 + 1) * 10);
+            //skill is leveled up
             game.data.skill1 += 1;
+            //increases the variable that the skill relys on 
             game.data.playerAttack += 1;
         } else if (skill === 2) {
             game.data.gold -= ((game.data.skill2 + 1) * 10);
@@ -143,6 +155,7 @@ game.SpendGold = Object.extend({
             game.data.playerHealth += 1;
         } else if (skill === 4) {
             game.data.gold -= ((game.data.ability1 + 1) * 10);
+            //levels up ability
             game.data.ability1 += 1;
         } else if (skill === 5) {
             game.data.gold -= ((game.data.ability2 + 1) * 10);

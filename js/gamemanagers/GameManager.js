@@ -17,12 +17,16 @@ game.ExperienceManager = Object.extend({
         return true;
     },
     gameOver: function (win) {
+        //if you win 
         if (win) {
+            //you get 5 exp
             game.data.exp += 5;
         } else {
+            //if not you get 1 exp
             game.data.exp += 1;
         }
         this.gameover = true;
+        //exp is saved
         me.save.exp = game.data.exp;
 
         $.ajax({

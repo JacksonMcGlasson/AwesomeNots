@@ -1,5 +1,6 @@
 game.MiniPlayerLocation = me.Entity.extend({
     init: function (x, y, settings) {
+        //settings for the mini player
         this.settings = settings;
         this.r = 5;
         this.diameter = (this.r + 2) * 2;
@@ -33,6 +34,7 @@ game.MiniPlayerLocation = me.Entity.extend({
             }]);
     },
     draw: function (renderer) {
+        //draws the miniplayer
         this._super(me.Entity, "draw", [renderer]);
         this.floating = true;
         renderer.drawImage(
@@ -43,6 +45,7 @@ game.MiniPlayerLocation = me.Entity.extend({
 
     },
     update: function () {
+       // makes the miniplayer follow the player
         this.pos.x = (10 + game.data.player.pos.x * 0.062);
          this.pos.y = (10 + game.data.player.pos.y * 0.06);
          return true;

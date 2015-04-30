@@ -22,7 +22,7 @@ game.EnemyHero = me.Entity.extend({
         this.body.setVelocity(game.data.playerMoveSpeed, 20);
 
         this.type = "EnemyHero";
-
+        //walk animation
         this.renderable.addAnimation("walk", [117, 118, 119, 120, 121, 122, 123, 124, 125], 80);
         this.renderable.setCurrentAnimation("walk");
     },

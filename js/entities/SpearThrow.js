@@ -1,6 +1,7 @@
 game.SpearThrow = me.Entity.extend({
     init: function (x, y, settings, facing) {
         this._super(me.Entity, 'init', [x, y, {
+                //spear settings
                 image: "spear",
                 width: 48,
                 height: 48,
@@ -11,7 +12,9 @@ game.SpearThrow = me.Entity.extend({
                 }
             }]);
         this.alwaysUpdate = true;
+        //sets speed of the spear
         this.body.setVelocity(12, 0);
+        //sets attack damage
         this.attack = game.data.ability3 * 3;
         this.type = "spear";
         this.facing = facing;

@@ -22,8 +22,11 @@ game.PlayerBaseEntity = me.Entity.extend({
         this.renderable.setCurrentAnimation("idle");
     },
     update: function (delta) {
+        //if tower health is less than 0
         if (this.health <= 0) {
+            //than it is broken
             this.broken = true;
+            //the player wins
             game.data.win = false;
             this.renderable.setCurrentAnimation("broken");
         }

@@ -16,13 +16,17 @@ game.EnemyBaseEntity = me.Entity.extend({
         this.body.onCollision = this.onCollision.bind(this);
 
         this.type = "EnemyBaseEntity";
+        //baes animatios
         this.renderable.addAnimation("idle", [0]);
         this.renderable.addAnimation("broken", [1]);
         this.renderable.setCurrentAnimation("idle");
     },
     update: function (delta) {
+        //if the tower falls
         if (this.health <= 0) {
+            //than it is broken
             this.broken = true;
+            //and the player is victorious
             game.data.win = true;
             this.renderable.setCurrentAnimation("broken");
         }

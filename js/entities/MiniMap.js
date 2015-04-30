@@ -16,14 +16,16 @@ game.MiniMap = me.Entity.extend({
     },
     update: function () {
         this.now = new Date().getTime();
-        // console.log(this.now - this.lastBuy);
+        
+        //if the map key is pressed
         if (me.input.isKeyPressed("map") && ((this.now - this.lastMap) >= 1000)) {
-            console.log("buy screen");
             this.lastMap = this.now;
             if (!this.mapping) {
+                //remove map
                 console.log("time to buy");
                 mapOff();
             } else {
+                //bring map back
                 this.mapOn();
             }
         }

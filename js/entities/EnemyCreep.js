@@ -30,12 +30,13 @@ game.EnemyCreep = me.Entity.extend({
         this.health = this.health - damage;
     },
     update: function (delta) {
-        //console.log(this.health);
+        //if all health is lost 
         if (this.health <= 0) {
+            //than the creep must die
             me.game.world.removeChild(this);
         }
         this.now = new Date().getTime();
-
+        //set its apeed and direction
         this.body.vel.x -= this.body.accel.x * me.timer.tick;
 
         me.collision.check(this, true, this.collideHandler.bind(this), true);

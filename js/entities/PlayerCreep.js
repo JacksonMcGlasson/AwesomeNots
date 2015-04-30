@@ -22,7 +22,7 @@ game.PlayerCreep = me.Entity.extend({
         this.body.setVelocity(game.data.creepMoveSpeed, 20);
 
         this.type = "PlayerCreep";
-
+        //walk animation
         this.renderable.addAnimation("walk", [3, 4, 5], 80);
         this.renderable.setCurrentAnimation("walk");
     },
@@ -30,8 +30,9 @@ game.PlayerCreep = me.Entity.extend({
         this.health = this.health - damage;
     },
     update: function (delta) {
-        //console.log(this.health);
+        //if health is less than 0
         if (this.health <= 0) {
+            //than remove the creep
             me.game.world.removeChild(this);
         }
         this.now = new Date().getTime();
@@ -48,10 +49,12 @@ game.PlayerCreep = me.Entity.extend({
         return true;
     },
      collideHandler: function (response) {
-
+        //collision with enemy base
         if (response.b.type === "EnemyBaseEntity") {
+            //creep attacks
             this.attacking = true;
             this.lastAtacking = this.now;
+            //stops the creep
             this.body.vel.x = 0;
             //  this.pos.x = this.pos.x + 1;
             if (this.now - this.lastHit >= game.data.creepAttackTimer) {

@@ -5,7 +5,7 @@ session_start();
 session_regenerate_id(true);
 //sets neccesary variables
 $path = "/JacksonMAwesomenauts/php/";
-
+//variables
 $host = "localhost";
 $username = "root";
 $password = "root";
